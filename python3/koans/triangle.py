@@ -18,6 +18,12 @@
 #
 def triangle(a, b, c):
     # DELETE 'PASS' AND WRITE THIS CODE
+    if a <= 0 or b <= 0 or c <= 0:
+        raise TriangleError("less than zero")
+    if(a + b <= c or b+c <= a or a+c<=b):
+        raise TriangleError("side too big")
+
+
     if a == b and b == c:
         return 'equilateral'
     if a == b or b == c or c == a:
