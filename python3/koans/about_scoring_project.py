@@ -34,7 +34,42 @@ from runner.koan import *
 
 def score(dice):
     # You need to write this method
-    pass
+
+
+    sortedDice = sorted(dice, reverse=True)
+    if(len(sortedDice) == 0):
+        return 0
+    points = 0
+    while(len(sortedDice)>0):
+        nextThree = sortedDice[-3:]
+        nextDie = sortedDice[-1]
+
+        if(nextThree == [1,1,1]):
+            sortedDice.pop()
+            sortedDice.pop()
+            sortedDice.pop()
+            points += 1000
+            continue
+        if(len(nextThree) == 3 and len(set(nextThree)) == 1):
+            points += nextDie * 100
+            sortedDice.pop()
+            sortedDice.pop()
+            sortedDice.pop()
+            continue
+
+        if(nextDie == 5):
+            singleFive = sortedDice.pop()
+            points += 50
+            continue
+        if(nextDie == 1):
+            singleFive = sortedDice.pop()
+            points += 100
+            continue
+        sortedDice.pop()
+        
+
+    return points
+
 
 class AboutScoringProject(Koan):
     def test_score_of_an_empty_list_is_zero(self):
