@@ -43,7 +43,6 @@ def score(dice):
     while(len(sortedDice)>0):
         nextThree = sortedDice[-3:]
         nextDie = sortedDice[-1]
-
         if(nextThree == [1,1,1]):
             sortedDice.pop()
             sortedDice.pop()
@@ -58,16 +57,14 @@ def score(dice):
             continue
 
         if(nextDie == 5):
-            singleFive = sortedDice.pop()
+            sortedDice.pop()
             points += 50
             continue
         if(nextDie == 1):
-            singleFive = sortedDice.pop()
+            sortedDice.pop()
             points += 100
             continue
         sortedDice.pop()
-        
-
     return points
 
 
